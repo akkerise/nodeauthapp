@@ -11,7 +11,7 @@ mongoose.connect(config.database);
 
 // On Connection
 mongoose.connection.on('connected', () => {
-  console.log('Connected to database '+config.database);
+  console.log('Connected to database '+ config.database);
 });
 
 // On Error
@@ -44,13 +44,13 @@ require('./config/passport')(passport);
 app.use('/users', users);
 
 // Index Route
-// app.get('/', (req, res) => {
-//   res.send('Invalid Endpoint');
-// });
-
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Invalid Endpoint');
 });
+
+// app.post('/', (req, res) => {
+//   res.send('Invalid Endpoint');
+// });
 
 // Start Server
 app.listen(port, () => {

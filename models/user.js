@@ -48,3 +48,12 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
     callback(null, isMatch);
   });
 }
+
+module.exports.addUserPromise = (newUser) => {
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(newUser.password, salt, null, (err, hash) => {
+      if(err) throw err;
+      newUser.password = hash;
+    });
+  });
+} 

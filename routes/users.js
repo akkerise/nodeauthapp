@@ -32,18 +32,7 @@ router.post('/register-promise', (req, res, next) => {
         username: req.body.username,
         password: req.body.password
     });
-    User.addUserPromise(newUser)
-    .then(res => {
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newUser.password, salt, null, (err, hash) => {
-              if(err) throw err;
-              newUser.password = hash;
-              newUser.save();
-          });
-        });
-    }).then(() => {
-        console.log('Saved Success');
-    },err => console.log(err))
+    User.addUserPromise(newUser);
 })
 
 // Authenticate
